@@ -78,7 +78,7 @@
     }
   }
 
-  /* ---------- enquiry form: opens a pre-filled email ---------- */
+  /* ---------- enquiry form: submits to Formspree ---------- */
   var form = document.getElementById("enquiry-form");
   if (form) {
     form.addEventListener("submit", function (evt) {
@@ -98,37 +98,30 @@
       check("email", function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }, "Please enter an email address we can reply to, like name@example.com.");
       if (firstInvalid) { firstInvalid.focus(); return; }
 
-      var data = new FormData(form);
-      var name = (data.get("name") || "").toString().trim();
-      var org = (data.get("organisation") || "").toString().trim();
-      var email = (data.get("email") || "").toString().trim();
-      var phone = (data.get("phone") || "").toString().trim();
-      var program = (data.get("program") || "").toString().trim();
-      var message = (data.get("message") || "").toString().trim();
-
-      var to = "eli.toombs@connectionworks.com.au";
-      var subject = "I-SPOT enquiry — " + (org || name || "New contact");
-      var bodyLines = [
-        "Name: " + name,
-        "Organisation: " + org,
-        "Email: " + email,
-        "Phone: " + phone,
-        "Program of interest: " + program,
-        "",
-        "Message:",
-        message
-      ];
-      var mailto =
-        "mailto:" + encodeURIComponent(to) +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(bodyLines.join("\n"));
-
-      window.location.href = mailto;
-
       var status = document.getElementById("form-status");
-      if (status) {
-        status.textContent = "Opening your email client to send this enquiry to " + to + "…";
-      }
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      if (status) status.textContent = "Sending your enquiry…";
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            form.reset();
+            if (status) status.textContent = "Thanks — your enquiry has been sent. We'll reply within two business days.";
+          } else {
+            if (status) status.textContent = "Sorry, something went wrong sending that. Please try again or email eli.toombs@connectionworks.com.au directly.";
+          }
+        })
+        .catch(function () {
+          if (status) status.textContent = "Sorry, something went wrong sending that. Please try again or email eli.toombs@connectionworks.com.au directly.";
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 
