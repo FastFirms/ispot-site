@@ -110,8 +110,7 @@
       })
         .then(function (response) {
           if (response.ok) {
-            form.reset();
-            if (status) status.textContent = "Thanks — your enquiry has been sent. We'll reply within two business days.";
+            window.location.href = "/thank-you";
           } else {
             if (status) status.textContent = "Sorry, something went wrong sending that. Please try again or email eli.toombs@connectionworks.com.au directly.";
           }
