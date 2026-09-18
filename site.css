@@ -552,6 +552,10 @@ p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
 @media (max-width: 900px) { .text-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .text-grid, .text-grid.cols-2 { grid-template-columns: 1fr; } }
 
+.text-grid.cards { gap: clamp(16px, 2vw, 24px); }
+.text-grid.cards > li { border: 1px solid var(--mist-deep); border-radius: var(--radius); background: var(--paper); padding: 26px 24px; }
+.text-grid.cards h3 { font-size: 1.1rem; }
+
 /* icon cards reuse the credential card styling */
 .cred-list.on-mist li { border-color: var(--mist-deep); border-top-color: var(--teal); }
 
