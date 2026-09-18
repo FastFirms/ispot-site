@@ -655,6 +655,10 @@ sup { font-size: 0.7em; line-height: 0; }
 @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; } }
 .form-card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: clamp(24px, 4vw, 44px); box-shadow: 0 24px 48px -30px rgb(30 78 85 / 0.4); }
 .form-card h2 { font-size: var(--fs-lg); }
+.form-intro { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+.form-intro-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--mist-deep); }
+.form-intro h2 { margin-bottom: 4px; }
+.form-intro-name { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
 .notice { background: #fbe9e1; border-left: 4px solid var(--action); border-radius: 0 var(--radius) var(--radius) 0; padding: 14px 18px; font-size: 0.95rem; margin: 0 0 24px; max-width: none; }
 .notice a { font-weight: 700; color: var(--ink); white-space: nowrap; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .notice { background: #3a2419; } }
