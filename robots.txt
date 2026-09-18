@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ispot.com.au/sitemap.xml
