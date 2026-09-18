@@ -3,8 +3,8 @@
    Audience: not-for-profits, ACCHOs, schools and government buying training.
    Character: professional, empathetic, clear next steps.
 
-   Palette  — paper #FFFFFF · mist #EEF4F4 · deep teal #1E4E55
-              ink #231B20 · clay #8C5E51 · action #C4481C (buttons only)
+   Palette  — paper #FFFFFF · mist #EEF4F4 · primary teal #4999A5
+              ink #231B20 · plum #2B1F27 · clay #8C5E51
    Type     — Literata (headings: warm, readable book serif)
               Public Sans (body + UI: civic, highly legible)
    ========================================================================= */
@@ -13,20 +13,21 @@
   --paper: #ffffff;
   --mist: #eef4f4;
   --mist-deep: #dde9ea;
-  --teal: #1e4e55;
+  --teal: #4999a5;           /* primary brand teal: buttons, links, accents */
   --teal-mid: #2f6f79;
-  --teal-bright: #4999a5;   /* brand teal: decorative use only */
+  --teal-bright: #4999a5;
+  --plum: #2b1f27;           /* dark background: crisis bar, footer, CTA band */
   --ink: #231b20;
   --ink-2: #4a4146;         /* secondary text, 9:1 on white */
   --clay: #8c5e51;
-  --action: #c4481c;        /* 4.9:1 with white text */
-  --action-hover: #a63a13;
-  --tertiary: #a86f22;       /* ochre: underlines, borders, icons (3:1+ on white) */
-  --tertiary-text: #8a5a18;  /* same hue darkened for text: 5.9:1 on white, AA */
-  --tertiary-tint: #f6ecdd;
+  --action: #4999a5;
+  --action-hover: #3a7c86;
+  --tertiary: #4999a5;       /* underlines, borders, icons */
+  --tertiary-text: #4999a5;  /* link text */
+  --tertiary-tint: #e8f2f3;
   --line: #d9e2e3;
   --line-dark: rgb(255 255 255 / 0.18);
-  --focus: #c4481c;
+  --focus: #4999a5;
 
   --font-head: "Literata", Georgia, "Times New Roman", serif;
   --font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -149,7 +150,7 @@ p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
 .btn-tertiary:hover { background: var(--tertiary-tint); }
 
 /* ---------- crisis support bar ---------- */
-.support-bar { background: var(--ink); color: #fff; font-size: var(--fs-sm); }
+.support-bar { background: var(--plum); color: #fff; font-size: var(--fs-sm); }
 .support-bar .wrap {
   display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
   gap: 4px 20px; padding-block: 9px;
@@ -411,7 +412,7 @@ p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
 @media (max-width: 860px) { .faq-layout { grid-template-columns: 1fr; } }
 
 /* ---------- closing call to action ---------- */
-.cta { background: var(--teal); color: #fff; }
+.cta { background: var(--plum); color: #fff; }
 .cta-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 88px); align-items: end; }
 .cta h2 { color: #fff; max-width: 24ch; }
 .cta p { color: rgb(255 255 255 / 0.86); }
@@ -427,7 +428,7 @@ p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
 
 /* ---------- footer: the woven pattern lives here as a cultural signature ---------- */
 .site-footer {
-  background: var(--ink); color: rgb(255 255 255 / 0.78); font-size: 0.95rem;
+  background: var(--plum); color: rgb(255 255 255 / 0.78); font-size: 0.95rem;
   position: relative; isolation: isolate;
 }
 .site-footer::before {
